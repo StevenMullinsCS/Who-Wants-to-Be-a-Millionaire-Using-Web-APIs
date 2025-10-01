@@ -14,3 +14,22 @@ def restart():
             exit(0)
         else:
             uinput = input("Invalid input. Please try Enter Y or N.: ")
+
+
+def get_points():
+    return points
+
+def set_points(new_points):
+    points = new_points
+
+def set_difficulty():
+    if get_points < 1000:
+        difficulty = "EASY"
+    # Placeholder
+    elif str:
+        return
+def qna():
+    # Print the question for the user
+
+    #Placeholder
+    return str
