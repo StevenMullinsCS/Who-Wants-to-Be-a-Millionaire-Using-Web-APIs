@@ -5,9 +5,13 @@ A console app version of the TV gameshow "Who Wants To Be a Millionaire" using P
 
 
 ## Issues Faced During Development
+### 10/4/2025
 - Had to learn how to properly parse data from an API. 
 - Determining how to output the questions, answers and how to accept input for said answers, checking said answers.
-- Im still getting used to using Python instead of C#, so I'm used to just clicking run in Visual Studio and it running. Thats not the case in Pycharm, as I need to actually have main chosen to run it. Because of this, I have no idea for how long my questions object, has been working as I was just running the api-handler file.
+### 10/6/2025
+- I'm still getting used to using Python instead of C#, so I'm used to just clicking run in Visual Studio and it running. Thats not the case in Pycharm, as I need to actually have main chosen to run it. Because of this, I have no idea for how long my questions object, has been working as I was just running the api-handler file.
+- Generally just fell behind in terms of how much I should have done by not, especially in keeping record of issues.
+- I may have fleshed things out more than necessary into different files instead of condensing it down to less files. Need to work on making code concise and not making 10 different files for one small program.
 
 ## Credits
 Program made by Steven Mullins
