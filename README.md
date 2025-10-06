@@ -1,4 +1,4 @@
-# Who-Wants-to-Be-a-Millionaire-Lab-4-Using-Web-APIs-
+# Who Wants to be a Millionaire? 
 ## Description
 A console app version of the TV gameshow "Who Wants To Be a Millionaire" using Python and the Open Trivia DB Api.
 
@@ -7,6 +7,7 @@ A console app version of the TV gameshow "Who Wants To Be a Millionaire" using P
 ## Issues Faced During Development
 - Had to learn how to properly parse data from an API. 
 - Determining how to output the questions, answers and how to accept input for said answers, checking said answers.
+- Im still getting used to using Python instead of C#, so I'm used to just clicking run in Visual Studio and it running. Thats not the case in Pycharm, as I need to actually have main chosen to run it. Because of this, I have no idea for how long my questions object, has been working as I was just running the api-handler file.
 
 ## Credits
 Program made by Steven Mullins
