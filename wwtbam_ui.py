@@ -13,9 +13,14 @@ def welcome():
       "|     2. Credits                                     |\n"
       "|     3. Exit                                        |\n"
       "------------------------------------------------------\n")
+    user_inp = input("Please select 1,2, or 3: ")
+    if user_inp == 2:
+        game_credits()
+    elif user_inp == 3:
+        exit(0)
 
 def game_credits():
-    return("------------------------------------------------------\n"
+    print("------------------------------------------------------\n"
           "|                                                    |\n"
           "|         Who Wants To Be a Millionaire?             |\n"
           "|        Program created by Steven Mullins           |\n"
@@ -37,6 +42,23 @@ def game_credits():
           "|    Press Enter to return to game menu.             |\n"
           "|                                                    |\n"
           "------------------------------------------------------\n")
+    input()
+    return
 
 def win():
-    return
+    print("------------------------------------------------------\n"
+          "|                                                    |\n"
+          "|             Congratulations! You win!              |\n"
+          "|            Would you like to play again?           |\n"
+          "|                                                    |\n"
+          "------------------------------------------------------\n")
+
+def lose():
+    print("------------------------------------------------------\n"
+          "|                                                    |\n"
+          "|       Unfortunately, That was incorrect.           |\n"
+          "|        You walk away with winnings of:             |\n"
+          "|                 $POINT PLACEHOLDER                 |\n"
+          "|            Would you like to play again?           |\n"
+          "|                                                    |\n"
+          "------------------------------------------------------\n")
