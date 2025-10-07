@@ -26,10 +26,16 @@ def parse_questions(difficulty):
         check_response_code(response)
         qs_json = response.json()
         return build_question_set(qs_json["results"])
-    elif difficulty == "MED":
-        qs = requests.get(url_medium)
+    elif difficulty == "MEDIUM":
+        response = requests.get(url_medium)
+        check_response_code(response)
+        qs_json = response.json()
+        return build_question_set(qs_json["results"])
     else:
-        requests.get(url_hard)
+        response = requests.get(url_hard)
+        check_response_code(response)
+        qs_json = response.json()
+        return build_question_set(qs_json["results"])
 
 '''
 This function takes the parsed data from the parse_questions function and creates objects from the questions. It then
@@ -46,4 +52,4 @@ def build_question_set(q_set):
             correct = qs["correct_answer"]
         )
         questions_set.append(question)
-    print(questions_set[0])
+    return questions_set
