@@ -1,5 +1,6 @@
 from re import match
 from api_handler import parse_questions
+from game_ui import win, lose
 import requests
 import json
 
@@ -9,10 +10,9 @@ base_point_vals = [100, 200, 300, 500,                     # EASY
                    1000, 2000, 4000, 8000, 16000,          # MEDIUM
                    32000, 64000, 125000, 250000, 500000,   # HARD
                    1000000]                                # WIN CONDITION
-user_points = 0
-difficulty = "EASY"
-
+difficulty = ""
 questions_set = []
+user_points = 0
 
 def restart():
     uinput = ""
@@ -26,40 +26,69 @@ def restart():
         else:
             uinput = input("Invalid input. Please try Enter Y or N.: ")
 
-
-def get_points():
-    return user_points
-
-def set_points():
-    i = 0
-    #if difficulty == "ENDLESS":
-      #  user_points = user_points + 100000
-    #else:
-    user_points = base_point_vals.pop()
-    user_points += 1
-
-def set_difficulty(points):
-    if points == 1000:
+def check_difficulty():
+    global difficulty
+    global user_points
+    if user_points == 0:
+        difficulty = "EASY"
+    elif user_points == 1000:
         difficulty = "MEDIUM"
-    elif points == 32000:
+    elif user_points == 32000:
         difficulty = "HARD"
-    else:
-        return
+    elif user_points == 1000000:
+        win()
     return difficulty
 
-def check_answer(question, answer):
-    if answer ==
-def qna():
-    if not questions_set:
-        parse_questions(difficulty)
+point_index = 0
+def set_points():
+    global user_points
+    global point_index
+    user_points = base_point_vals[point_index]
+    point_index += 1
+
+def check_answer(question, answer_int):
+    if question.correct_ans == question.ans[answer_int]:
+        return True
     else:
+        return False
+
+def qna():
+    check_difficulty()
+    if not questions_set:
+        questions_set.extend(parse_questions(difficulty))
+        return qna()
+    else:
+        lost = False
+    while not lost:
         q_index = 0
         print(questions_set[q_index])
-        answer = input("Please select A, B, C, or D.")
-        ans_as_int = answer.char - 64
-        check_answer(questions_set[q_index], answer)
-    #Placeholder
-    return str
+        valid_input = False
+        while not valid_input:
+            answer = input("Please select A, B, C, or D: ")
+            answer = answer.upper()
+            # Wanted to convert the letter inputted to the spot in the array, found how to do this through the stackoverflow link below:
+            # https://stackoverflow.com/questions/20044730/convert-character-to-its-alphabet-integer-position
+            if len(answer) != 1:
+                answer = answer[0]
+            ans_as_int = ord(answer) - 65
+            if ans_as_int < 0 or ans_as_int > 3:
+                print("Invalid input. Please try again.")
+            else:
+                valid_input = True
+        correct = check_answer(questions_set[q_index], ans_as_int)
+        if correct:
+            set_points()
+            questions_set.remove(questions_set[q_index])
+            print(f"That was correct! Total Points: {user_points}\n"
+                      f"Press enter to continue...")
+            input()
+            qna()
+        else:
+            lost = True
+            return lose(user_points)
+
+
+
 
 
 
