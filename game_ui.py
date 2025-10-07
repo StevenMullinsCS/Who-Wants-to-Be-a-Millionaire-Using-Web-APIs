@@ -14,9 +14,10 @@ def welcome():
       "|     3. Exit                                        |\n"
       "------------------------------------------------------\n")
     user_inp = input("Please select 1,2, or 3: ")
-    if user_inp == 2:
+    if int(user_inp) == 2:
         game_credits()
-    elif user_inp == 3:
+    elif int(user_inp) == 3:
+        print("Thanks for playing!")
         exit(0)
 
 def game_credits():
@@ -52,13 +53,21 @@ def win():
           "|            Would you like to play again?           |\n"
           "|                                                    |\n"
           "------------------------------------------------------\n")
+    user_inp = input("Y/N: ")
+    if user_inp == "N":
+        game_play = False
+        exit(0)
+    elif user_inp == "Y":
+        game_play = True
+        restart()
 
-def lose():
-    print("------------------------------------------------------\n"
-          "|                                                    |\n"
-          "|       Unfortunately, That was incorrect.           |\n"
-          "|        You walk away with winnings of:             |\n"
-          "|                 $POINT PLACEHOLDER                 |\n"
-          "|            Would you like to play again?           |\n"
-          "|                                                    |\n"
-          "------------------------------------------------------\n")
+def lose(points):
+    print( "------------------------------------------------------\n"
+           "|                                                    |\n"
+           "|       Unfortunately, That was incorrect.           |\n"
+           "|        You walk away with winnings of:             |\n"
+          f"                  ${points}                          \n"
+           "|            Would you like to play again?           |\n"
+           "|                                                    |\n"
+           "------------------------------------------------------\n")
+    exit(0)
