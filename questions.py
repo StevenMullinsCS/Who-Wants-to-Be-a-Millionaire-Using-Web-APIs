@@ -1,4 +1,5 @@
-import random
+import random as rd
+import html
 class Question:
     qtext: str
     difficulty: str
@@ -12,12 +13,13 @@ class Question:
         # Questions should not be in the same order as provided by the JSON. If they were, every question would be
         # correct if answered with A.
         self.ans = ans
+        rd.shuffle(self.ans)
         self.correct_ans = correct
 
     # Prints the question along with the answers from the list of possible answers. The user will input the corresponding
     # letter associated with the answer given.
     def __repr__(self):
-        return (f"{self.qtext}\n"
+        return (f"{html.unescape(self.qtext)}\n"
                 f"\n"
                 f"A. {self.ans[0]}\n"
                 f"B. {self.ans[1]}\n"
