@@ -1,5 +1,8 @@
-from inspect import stack
+"""
+api_handler.py contains the functions and information for the API calls and makes said calls.
+"""
 
+from inspect import stack
 import requests
 import json
 from questions import Question
@@ -9,6 +12,9 @@ url_easy = "https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple"
 url_medium = "https://opentdb.com/api.php?amount=5&difficulty=medium&type=multiple"
 url_hard = "https://opentdb.com/api.php?amount=5&difficulty=hard&type=multiple"
 
+'''
+Checks the returned response code to ensure that there were no issues receiving the question set.
+'''
 def check_response_code(response):
     if response.status_code == 200:
         return
@@ -16,7 +22,8 @@ def check_response_code(response):
         print(f"Error: Could not fetch questions set: Response Code {response.status_code}")
         exit(1)
 
-''' Calls the API depending on the current difficulty based on points. The data from the json will then be fed into the
+'''
+Calls the API depending on the current difficulty based on points. The data from the json will then be fed into the
 constructor for the question set. Using the API call necessary for the difficulty should help performance in theory,
 as there is not unnecessary data being stored when the questions are not needed yet.
 '''
