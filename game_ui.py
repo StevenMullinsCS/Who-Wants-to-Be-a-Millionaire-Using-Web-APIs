@@ -1,3 +1,10 @@
+"""
+game_ui contains elements of the games UI.
+"""
+
+'''
+Welcomes the user and explains how the game works before giving options to play the game, view credits, or close the game.
+'''
 def welcome():
     print("------------------------------------------------------\n"
       "|     Welcome to Who Wants to Be a Millionaire!      |\n"
@@ -20,6 +27,9 @@ def welcome():
         print("Thanks for playing!")
         exit(0)
 
+'''
+Displays attribution information, credit to the API developers and the program's creator
+'''
 def game_credits():
     print("------------------------------------------------------\n"
           "|                                                    |\n"
@@ -44,22 +54,15 @@ def game_credits():
           "|                                                    |\n"
           "------------------------------------------------------\n")
     input()
-    return
+    return welcome()
 
 def win():
     print("------------------------------------------------------\n"
           "|                                                    |\n"
           "|             Congratulations! You win!              |\n"
-          "|            Would you like to play again?           |\n"
           "|                                                    |\n"
           "------------------------------------------------------\n")
-    user_inp = input("Y/N: ")
-    if user_inp == "N":
-        game_play = False
-        exit(0)
-    elif user_inp == "Y":
-        game_play = True
-        restart()
+
 
 def lose(points):
     print( "------------------------------------------------------\n"
@@ -67,7 +70,5 @@ def lose(points):
            "|       Unfortunately, That was incorrect.           |\n"
            "|        You walk away with winnings of:             |\n"
           f"                  ${points}                          \n"
-           "|            Would you like to play again?           |\n"
            "|                                                    |\n"
            "------------------------------------------------------\n")
-    exit(0)
