@@ -21,6 +21,14 @@ A console app version of the TV game-show "Who Wants To Be a Millionaire" using 
 - In the last point, I mentioned I was using Pycharm. While the lab instructions directed us to use visual studio, Pycharm honestly feels very good to use, so I have been using that for most labs and assignments. 
 - At some point, I was having issues calling variables within different methods. It would not let me call the external variables, but would rather say the name of a variable was the same as that of a variable from the outer scope. Since the variables were needed in several functions across the program, I ended up researching to figure out how to solve this and the answer I came up with was declaring the values as global in the functions. While I'm unsure if this is the best way to resolve this in Python, it got the job done.
 
+### 10/15/2025
+Despite this being a day after the extended due date, There were some changes and fixes I needed to implement. 
+- I wanted the UI for the questions to be more fleshed out and provide more data. It now provides the Difficulty and the value of the question.
+- I needed to have the correct answers provided to efficiently test the program through the console. I accomplished this by slightly modifying the repr function to allow for the enabling of debugging to show the correct answer.
+- There were some slight issues with the question and answering portion that I only realized when playing the actual game through to the medium questions. The issue was that the index was going out of bounds for the question array. This was fixed by modifying how the questions were called slightly.
+- There was an issue regarding the printing of the questions. The questions were not printing special characters properly, but this was resolved by escaping the characters
+- A more minor issue, I pushed the game to GitHub with the debugging enabled. I fixed that by just changing the value to false and recommitting.
+
 ## Credits
 Program made by Steven Mullins
 
