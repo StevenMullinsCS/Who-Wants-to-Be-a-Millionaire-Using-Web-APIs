@@ -59,7 +59,8 @@ def game_credits():
 def win():
     print("------------------------------------------------------\n"
           "|                                                    |\n"
-          "|             Congratulations! You win!              |\n"
+          "|                Congratulations!                    |\n"
+          "|             You have won 1,000,000!                |\n"
           "|                                                    |\n"
           "------------------------------------------------------\n")
 
