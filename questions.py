@@ -5,7 +5,7 @@ the best way to do it, as it allows us to call for certain parts easier and stor
 import random as rd
 import html
 # DEBUGGING: Display correct answer with question.
-debug = True
+debug = False
 class Question:
     qtext: str
     difficulty: str
