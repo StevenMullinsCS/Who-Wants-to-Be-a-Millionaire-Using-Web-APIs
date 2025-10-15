@@ -4,6 +4,8 @@ the best way to do it, as it allows us to call for certain parts easier and stor
 """
 import random as rd
 import html
+# DEBUGGING: Display correct answer with question.
+debug = True
 class Question:
     qtext: str
     difficulty: str
@@ -27,7 +29,16 @@ class Question:
     letter associated with the answer given.
     '''
     def __repr__(self):
-        return (f"{html.unescape(self.qtext)}\n"
+        if debug:
+            return (f"{html.unescape(self.qtext)}\n"
+                    f"\n"
+                    f"A. {html.unescape(self.ans[0])}\n"
+                    f"B. {html.unescape(self.ans[1])}\n"
+                    f"C. {html.unescape(self.ans[2])}\n"
+                    f"D. {html.unescape(self.ans[3])}\n"
+                    f"CORRECT ANSWER: {self.correct_ans}\n")
+        else:
+            return (f"{html.unescape(self.qtext)}\n"
                 f"\n"
                 f"A. {self.ans[0]}\n"
                 f"B. {self.ans[1]}\n"
