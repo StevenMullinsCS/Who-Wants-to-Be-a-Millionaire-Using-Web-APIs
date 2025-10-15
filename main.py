@@ -1,11 +1,9 @@
 """
-main.py is where the game is ran from.
+main.py is where the game is run from.
 """
 from game_ui import welcome
 import game_functionality as game
 
-difficulty = "EASY"
-game.set_points()
 program_active = True
 gameplay = True
 '''
