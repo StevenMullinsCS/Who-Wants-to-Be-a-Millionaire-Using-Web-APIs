@@ -28,6 +28,7 @@ class Question:
     Prints the question along with the answers from the list of possible answers. The user will input the corresponding
     letter associated with the answer given.
     '''
+    # Source for the HTML.unescape fix: https://stackoverflow.com/questions/2087370/decode-html-entities-in-python-string
     def __repr__(self):
         if debug:
             return (f"{html.unescape(self.qtext)}\n"
