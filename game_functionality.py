@@ -8,18 +8,23 @@ from game_ui import win, lose
 import requests
 import json
 
-# Who Wants To Be A Millionaire uses a "Point Ladder" structure. The easiest way I figured out to do the points was to
-# have a stack that pops the values as questions are answered correctly.
-base_point_vals = [0, 100, 200, 300, 500,                     # EASY
+'''
+Who Wants To Be A Millionaire uses a "Point Ladder" structure. The easiest way I figured out to do the points was to
+have a stack that pops the values as questions are answered correctly. To ensure that being at 1,000,000 dollars still gives a question,
+I added an extra value that is just 1,000,000 + 1.
+'''
+base_point_vals = [100, 200, 300, 500,                  # EASY
                    1000, 2000, 4000, 8000, 16000,          # MEDIUM
                    32000, 64000, 125000, 250000, 500000,   # HARD
-                   1000000]                                # WIN CONDITION
+                   1000000, 1000001]                                # WIN CONDITION
 difficulty = ""
 questions_set = []
-user_points = 0
 lost = False
 point_index = 0
-
+q_index = 0
+user_points = 0
+# Option to enable Debugging, show correct answer to question in the program.
+debug = True
 
 '''
 Resets the values of the program to allow the game to reset. If the game does not reset, the questions would be rehashed,
@@ -32,10 +37,13 @@ def restart():
         global user_points
         global point_index
         global questions_set
+        global q_index
         point_index = 0
         user_points = 0
+        q_index = 0
         questions_set = []
     elif uinput == "N":
+        print("Thanks for playing!")
         exit(0)
     else:
         while uinput != "Y" and uinput != "N":
@@ -56,7 +64,7 @@ def check_difficulty():
         difficulty = "MEDIUM"
     elif user_points == 32000:
         difficulty = "HARD"
-    elif user_points == 1000000:
+    elif user_points == 1000001:
         win()
     return difficulty
 
@@ -96,12 +104,17 @@ Then calls a function to check the answer to ensure it is correct before display
 win or loss screen
 '''
 def qna():
-    check_difficulty()
-    check_empty_set()
     lost = False
     while lost is False:
-        q_index = 0
-        print(questions_set[q_index])
+        check_difficulty()
+        check_empty_set()
+        global q_index
+        print(f"------------------------------------------\n"
+              f"Question Value: {base_point_vals[point_index]}       Difficulty: {difficulty}")
+        print(f"------------------------------------------\n"
+              f"Question #{point_index + 1}\n"
+              f"{questions_set[q_index]}"
+              f"--------------------------------------------------------------")
         valid_input = False
         while not valid_input:
             answer = input("Please select A, B, C, or D: ")
@@ -118,13 +131,13 @@ def qna():
         correct = check_answer(questions_set[q_index], ans_as_int)
         if correct:
             set_points()
+            if user_points == 1000000:
+                return win()
             questions_set.remove(questions_set[q_index])
             print(f"That was correct! Total Points: {user_points}\n"
                       f"Press enter to continue...")
             input()
-            lost = False
         else:
-            lost = True
             return lose(user_points)
 
 
